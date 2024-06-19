@@ -48,6 +48,9 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ['assets-eu-01.kc-usercontent.com', 'dev-onrewind.imgix.net'],
+  },
   reactStrictMode: true,
   async headers() {
     return [

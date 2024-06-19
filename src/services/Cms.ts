@@ -2,7 +2,6 @@ import {
   Cursor,
   InitConfig,
   OriginsVideoCard,
-  OriginsVideoIndexItem,
   OriginsVideoSection,
 } from '@origins-digital/types/ott';
 import { AxiosRequestConfig } from 'axios';
@@ -29,10 +28,6 @@ class Cms {
 
   getPageContent<T>(codename: string, config: AxiosRequestConfig): Promise<T> {
     return this.client.find(`/ott/kentico/pages/${codename}`, config);
-  }
-
-  getVideos({ limit = 100 }): Promise<OriginsVideoIndexItem[]> {
-    return this.client.findAll(`/ott/kentico/videos`, { limit });
   }
 
   getVideo(
