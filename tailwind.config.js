@@ -21,7 +21,7 @@ module.exports = {
       colors: {
         primary: '#f16305',
         secondary: 'var(--secondary)',
-        background: '#FEFEFE',
+        background: '#010D19',
         form: '#696969',
         facebook: '#1B74E4',
         error: '#ef4444',

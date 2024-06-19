@@ -8,3 +8,7 @@
 :root {
   --secondary: #0062bf;
 }
+
+a {
+  @apply text-white hover:text-blue-700;
+}
