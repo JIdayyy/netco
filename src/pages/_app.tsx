@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
-import Layout from 'src/components/Layout';
 
 import 'react-multi-carousel/lib/styles.css';
 import '../styles.css';
@@ -19,7 +18,7 @@ export const queryClient = new QueryClient({
   },
 });
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement, props: any) => ReactNode;
 };
 

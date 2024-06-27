@@ -80,7 +80,7 @@ export default function SignIn() {
                   </button>
                 </div>
                 <p className="text-sm text-center text-white">
-                  Don't have an account yet?{' '}
+                  Don&apos;t have an account yet?{' '}
                   <a
                     href="#!"
                     className="text-blue-400 focus:outline-none focus:underline focus:text-blue-500 dark:focus:border-blue-800"
