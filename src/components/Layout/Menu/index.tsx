@@ -20,7 +20,7 @@ function MenuItem({ item, onClick }: MenuItemProps) {
     router.push(item.redirectionTarget);
   };
   return (
-    <li key={item._kenticoId} className={'uppercase font-bold text-white'}>
+    <li key={item._kenticoId} className={'uppercase font-bold text-2xl text-white'}>
       <button onClick={handleClick}>{item.name}</button>
     </li>
   );
@@ -47,7 +47,7 @@ export default function Menu({ config }: { config: WebConfig['header'] }) {
         <div className="h-full pt-24 flex flex-col justify-start items-center">
           <nav>
             {!selected ? (
-              <ul className={'flex justify-start space-y-4 flex-col'}>
+              <ul className={'flex justify-start text-2xl space-y-4 flex-col'}>
                 <Link href={'/'}>
                   <li className={'capitalize font-bold text-white'}>Home</li>
                 </Link>

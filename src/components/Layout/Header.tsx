@@ -21,7 +21,9 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
       } fixed top-0 z-[9999] transition-all ease-in-out duration-300 text-white flex justify-center`}
     >
       <div
-        className={'max-w-7xl px-10 py-4 flex w-full justify-between items-stretch  align-middle'}
+        className={
+          'max-w-7xl py-2 px-5 tablet:px-10 tablet:py-4 flex w-full justify-between items-stretch  align-middle'
+        }
       >
         <button
           onClick={() => toggleMenu()}
@@ -31,17 +33,17 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
         </button>
         <Link className={'flex-1'} href={'/'}>
           <Image
-            className={'cursor-pointer !hidden tablet:!block'}
+            className={'cursor-pointer  tablet:!block'}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             src={config.logo.url}
             alt={'origins digital logo'}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            width={+config.logo.width / 5}
+            width={+config.logo.width / 6}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            height={+config.logo.height / 5}
+            height={+config.logo.height / 6}
           />
         </Link>
 
