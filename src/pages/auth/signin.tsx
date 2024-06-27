@@ -7,8 +7,12 @@ export default function SignIn() {
   const router = useRouter();
   const { handleSignIn } = useAppContext();
   return (
-    <div className={'text-white w-screen h-screen flex'}>
-      <div className={'relative flex items-center align-middle justify-center w-1/2 h-full'}>
+    <div className={'text-white relative w-screen bg-background h-screen flex'}>
+      <div
+        className={
+          'absolute h-[200px] tablet:h-screen top-0 left-0 brightness-10  tablet:relative flex items-center align-middle justify-center w-full z-0 tablet:w-1/2 h-full'
+        }
+      >
         <Image
           layout={'fill'}
           className={'object-cover brightness-50'}
@@ -18,7 +22,7 @@ export default function SignIn() {
         />
       </div>
 
-      <div className="flex flex-grow items-center min-h-screen bg-background">
+      <div className="flex z-10 flex-grow items-center min-h-screen ">
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
             <div className="text-center">
