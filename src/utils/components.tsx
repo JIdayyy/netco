@@ -4,7 +4,6 @@ import AdSection from '../components/AdSection';
 import Carousel from '../components/Carousel';
 import Slider from '../components/Slider';
 
-import DynamicGrid from '$components/DynamicGrid';
 import GridSection from '$components/GridSection';
 
 function NotFound({ itemType }: { itemType: string }) {
@@ -18,7 +17,7 @@ function NotFound({ itemType }: { itemType: string }) {
 export const componentRenderer = (component: SectionContent) => {
   switch (component._kenticoItemType) {
     case 'section_static_slider':
-      return <Slider {...component} />;
+      return <Slider />;
     case 'section_static_ad':
       return <AdSection {...component} />;
     case 'section_static_carousel':

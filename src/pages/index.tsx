@@ -1,28 +1,22 @@
-import { useQuery } from 'react-query';
+import { ReactElement } from 'react';
 import { KenticoPageLayoutDTO } from '@origins-digital/types/ott';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Cms from 'src/services/Cms';
 
+import Layout from '$components/Layout';
 import { componentRenderer } from '$utils/components';
 import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
 
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-function Home({ page, webConfig }: IProps): JSX.Element | null {
-  const { data } = useQuery('home-page', () => void 0, {
-    initialData: page,
-  });
-  useQuery('web-config', () => void 0, {
-    initialData: webConfig,
-  });
-
-  if (!data) {
+function Home({ page }: Readonly<IProps>): JSX.Element | null {
+  if (!page) {
     return null;
   }
 
   return (
     <div className={'flex flex-col space-y-8 items-center'}>
-      {data.components.map((component) => componentRenderer(component))}
+      {page.components.map((component) => componentRenderer(component))}
     </div>
   );
 }
@@ -44,6 +38,10 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
       webConfig: webConfig.status === 'fulfilled' ? webConfig.value : null,
     },
   };
+};
+
+Home.getLayout = function getLayout(page: ReactElement, config: any) {
+  return <Layout config={config}>{page}</Layout>;
 };
 
 export default Home;

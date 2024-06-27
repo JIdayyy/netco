@@ -2,8 +2,6 @@ import { IoPlay } from 'react-icons/io5';
 import Carousel from 'react-multi-carousel';
 import Image from 'next/image';
 
-import 'react-multi-carousel/lib/styles.css';
-
 const sliderItems = [
   {
     itemType: 'video',
@@ -53,7 +51,7 @@ const responsive = {
 
 export default function Slider() {
   return (
-    <div className={'flex flex-col w-full'}>
+    <div className={'flex my-12 flex-col w-full'}>
       <Carousel showDots responsive={responsive}>
         {sliderItems.map((item) => {
           return (
@@ -68,12 +66,20 @@ export default function Slider() {
                   'absolute px-10 space-y-1 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-1/2 z-50'
                 }
               >
-                <p className={'text-white capitalize text-4xl font-bold'}>{item.name}</p>
-                <p className={'text-white capitalize text-xl font-bold'}>{item.subName}</p>
+                <p
+                  className={
+                    'text-white capitalize tablet:text-2xl desktop:text-4xl text-xl desktop:text-4xl font-bold'
+                  }
+                >
+                  {item.name}
+                </p>
+                <p className={'text-white capitalize text-sm tablet:text-xl font-bold'}>
+                  {item.subName}
+                </p>
 
                 <button
                   className={
-                    'bg-blue-500 flex space-x-2 items-center align-middle justify-center text-white px-2 py-1 rounded-md'
+                    'bg-blue-500 flex text-xs tablet:text-base space-x-2 items-center align-middle justify-center text-white px-2 py-1 rounded-sm'
                   }
                 >
                   <span>Watch</span> <IoPlay size={20} />

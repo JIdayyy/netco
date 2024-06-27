@@ -31,7 +31,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
       </div>
       <Image
         className={'z-10 object-cover'}
-        layout="fill"
+        layout={'fill'}
         src={props.poster || IMG_PLACEHOLDER}
         alt={props.name}
       />
