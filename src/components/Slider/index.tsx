@@ -27,6 +27,14 @@ const sliderItems = [
       'https://dev-onrewind.imgix.net/thumbnails/fe4dcc88-d6b5-4cdf-af5d-4cec568791db/img-30300.jpg',
     itemId: '3',
   },
+  {
+    itemType: 'video',
+    name: 'F1 championship',
+    subName: '2021',
+    poster:
+      'https://dev-onrewind.imgix.net/thumbnails/fe4dcc88-d6b5-4cdf-af5d-4cec568791db/img-30300.jpg',
+    itemId: '4',
+  },
 ];
 
 const responsive = {

@@ -30,7 +30,7 @@ type AppPropsWithLayout = AppProps & {
   config: InitConfig<Header>;
 };
 
-type AppOwnProps = { config: InitConfig<Header> };
+type AppOwnProps = { config?: InitConfig<Header> };
 
 function MyApp(props: AppPropsWithLayout): JSX.Element {
   const getLayout = props.Component.getLayout ?? ((page) => page);
@@ -50,8 +50,13 @@ function MyApp(props: AppPropsWithLayout): JSX.Element {
 export default MyApp;
 
 MyApp.getInitialProps = async (context: AppContext): Promise<AppOwnProps & AppInitialProps> => {
-  const ctx = await App.getInitialProps(context);
-  const webConfig = await Cms.getConfig();
+  try {
+    const ctx = await App.getInitialProps(context);
+    const webConfig = await Cms.getConfig();
+    return { ...ctx, config: webConfig };
+  } catch (err) {
+    const ctx = await App.getInitialProps(context);
 
-  return { ...ctx, config: webConfig };
+    return { ...ctx };
+  }
 };
