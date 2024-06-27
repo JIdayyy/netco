@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import MultiCarousel, { ResponsiveType } from 'react-multi-carousel';
 import {
   CarouselSectionDTO,
@@ -49,14 +48,10 @@ export default function Carousel(props: Readonly<CarouselSectionDTO>) {
 }
 
 function VideoCard(props: Readonly<OriginsVideoCard>) {
-  const [isHover, setIsHover] = useState(false);
-
   return (
     <Link href={`/videos/${props.itemId}`}>
       <motion.div
         whileHover={{ scale: 1.05 }}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
         className={
           'rounded-md border border-gray-700  cursor-pointer aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
         }
@@ -90,15 +85,11 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
 }
 
 function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
-  const [isHover, setIsHover] = useState(false);
-
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       initial={{ scale: 0.9, opacity: 0.5 }}
       animate={{ scale: 1, opacity: 1 }}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
       className={
         'rounded-md border border-gray-700  cursor-pointer  aspect-video  relative overflow-hidden'
       }

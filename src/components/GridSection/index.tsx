@@ -49,11 +49,10 @@ export default function GridSection(config: Readonly<SectionDynamicGridWithCateg
 
   // simulate fake data by adding a random video to the list
   const handleMoreVideos = () => {
-    const randomNumber = Math.floor(Math.random() * 10);
+    const randomNumber = Math.floor(Math.random() * 4);
     const randomVideos = config.Videos.slice(0, randomNumber);
     setVideos([...videos, ...randomVideos]);
   };
-  console.log(videos);
   return (
     <div
       className={
