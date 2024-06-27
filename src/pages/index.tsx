@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { KenticoPageLayoutDTO } from '@origins-digital/types/ott';
+import { WebConfig } from '@origins-digital/types/web-experience';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Cms from 'src/services/Cms';
 
@@ -23,24 +24,22 @@ function Home({ page }: Readonly<IProps>): JSX.Element | null {
 
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   const pageLocale = locale ?? DEFAULT_LANGUAGE;
-  const [page, webConfig] = await Promise.allSettled([
+  const [page] = await Promise.allSettled([
     Cms.getPageContent<KenticoPageLayoutDTO>(KENTICO_HARDCODED_PAGES.HOME, {
       params: {
         language: pageLocale,
       },
     }),
-    Cms.getConfig(),
   ]);
 
   return {
     props: {
       page: page.status === 'fulfilled' ? page.value : null,
-      webConfig: webConfig.status === 'fulfilled' ? webConfig.value : null,
     },
   };
 };
 
-Home.getLayout = function getLayout(page: ReactElement, config: any) {
+Home.getLayout = function getLayout(page: ReactElement, config: WebConfig) {
   return <Layout config={config}>{page}</Layout>;
 };
 

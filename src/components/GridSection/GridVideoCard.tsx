@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaLock } from 'react-icons/fa';
 import { OriginsVideoCard } from '@origins-digital/types/ott';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import { IMG_PLACEHOLDER } from '$utils/constants';
@@ -8,7 +9,10 @@ import { IMG_PLACEHOLDER } from '$utils/constants';
 function VideoCard(props: Readonly<OriginsVideoCard>) {
   const [isHover, setIsHover] = useState(false);
   return (
-    <div
+    <motion.div
+      initial={{ scale: 0.9 }}
+      animate={{ scale: 1 }}
+      whileHover={{ scale: 1.05 }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       className={
@@ -41,16 +45,19 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
         }
       ></div>
       {isHover && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, backgroundColor: 'rgba(0,0,0,0.5)' }}
+          transition={{ duration: 0.3, delay: 0 }}
           className={
-            'absolute w-full flex flex-col justify-center items-center align-middle bg-opacity-50 transition-all bg-transparent hover:bg-blue-600 hover:bg-opacity-40 ease-in-out duration-500 h-full z-40'
+            'absolute w-full flex flex-col justify-center items-center align-middle bg-opacity-50  bg-transparent   h-full z-40'
           }
         >
           <FaLock color={'white'} size={50} />
           <p className={'text-white text-xs'}>Sign in to unlock</p>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

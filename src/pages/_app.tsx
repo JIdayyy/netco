@@ -1,9 +1,12 @@
 import { ReactElement, ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { Header, InitConfig } from '@origins-digital/types/ott';
 import { NextPage } from 'next';
-import { AppProps } from 'next/app';
+import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
+
+import Cms from '../services/Cms';
 
 import 'react-multi-carousel/lib/styles.css';
 import '../styles.css';
@@ -24,17 +27,19 @@ export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+  config: InitConfig<Header>;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-  const getLayout = Component.getLayout ?? ((page) => page);
+type AppOwnProps = { config: InitConfig<Header> };
 
+function MyApp(props: AppPropsWithLayout): JSX.Element {
+  const getLayout = props.Component.getLayout ?? ((page) => page);
   return (
     <>
       <AppContextProvider>
         <QueryClientProvider client={queryClient}>
           <NextNProgress color="var(--secondary)" />
-          {getLayout(<Component {...pageProps} />, pageProps.webConfig)}
+          {getLayout(<props.Component {...props.pageProps} />, props.config)}
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </AppContextProvider>
@@ -43,3 +48,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 }
 
 export default MyApp;
+
+MyApp.getInitialProps = async (context: AppContext): Promise<AppOwnProps & AppInitialProps> => {
+  const ctx = await App.getInitialProps(context);
+  const webConfig = await Cms.getConfig();
+
+  return { ...ctx, config: webConfig };
+};

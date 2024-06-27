@@ -28,14 +28,10 @@ VideoPage.getLayout = function getLayout(page: ReactElement, config: any) {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const [video, webConfig] = await Promise.allSettled([
-    Cms.getVideo(params?.id as string),
-    Cms.getConfig(),
-  ]);
+  const [video] = await Promise.allSettled([Cms.getVideo(params?.id as string)]);
   return {
     props: {
       video: video.status === 'fulfilled' ? video.value : null,
-      webConfig: webConfig.status === 'fulfilled' ? webConfig.value : null,
     },
   };
 };

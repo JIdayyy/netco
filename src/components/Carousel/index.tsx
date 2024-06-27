@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import MultiCarousel, { ResponsiveType } from 'react-multi-carousel';
 import {
   CarouselSectionDTO,
   OriginsPlaylistCard,
   OriginsVideoCard,
 } from '@origins-digital/types/ott';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -26,7 +28,7 @@ const responsive: ResponsiveType = {
 
 export default function Carousel(props: Readonly<CarouselSectionDTO>) {
   return (
-    <div className={'w-full max-w-7xl '}>
+    <div className={'w-full max-w-7xl'}>
       <h2 className={'font-bold px-8 uppercase text-white'}>{props.title}</h2>
       <MultiCarousel
         itemClass={'mr-6'}
@@ -47,11 +49,16 @@ export default function Carousel(props: Readonly<CarouselSectionDTO>) {
 }
 
 function VideoCard(props: Readonly<OriginsVideoCard>) {
+  const [isHover, setIsHover] = useState(false);
+
   return (
     <Link href={`/videos/${props.itemId}`}>
-      <div
+      <motion.div
+        whileHover={{ scale: 1.05 }}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
         className={
-          'rounded-md border border-gray-700 ease-in cursor-pointer transition-all aspect-video hover:scale-110 hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
+          'rounded-md border border-gray-700  cursor-pointer aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
         }
       >
         <div className={'w-full z-[50] absolute top-0 bg-blue-500 h-[10px]'}></div>
@@ -77,16 +84,23 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
             'absolute w-full h-full  bg-gradient-to-b from-transparent via-transparent to-black z-30'
           }
         ></div>
-      </div>
+      </motion.div>
     </Link>
   );
 }
 
 function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
+  const [isHover, setIsHover] = useState(false);
+
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      initial={{ scale: 0.9, opacity: 0.5 }}
+      animate={{ scale: 1, opacity: 1 }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
       className={
-        'rounded-md border border-gray-700 ease-in cursor-pointer transition-all aspect-video hover:scale-110  relative overflow-hidden'
+        'rounded-md border border-gray-700  cursor-pointer  aspect-video  relative overflow-hidden'
       }
     >
       <div className={'w-full z-[50] absolute top-0 bg-blue-500 h-[10px]'}></div>
@@ -110,6 +124,6 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
           'absolute w-full h-full bg-gradient-to-b from-transparent via-transparent to-black z-30'
         }
       ></div>
-    </div>
+    </motion.div>
   );
 }
