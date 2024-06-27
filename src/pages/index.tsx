@@ -1,40 +1,47 @@
+import { ReactElement } from 'react';
+import { KenticoPageLayoutDTO } from '@origins-digital/types/ott';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Cms from 'src/services/Cms';
 
+import Layout from '$components/Layout';
+import { componentRenderer } from '$utils/components';
 import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
 
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-function Home({ page }: IProps): JSX.Element | null {
+function Home({ page }: Readonly<IProps>): JSX.Element | null {
+  if (!page) {
+    return null;
+  }
+
   return (
-    <>
-      <pre>{JSON.stringify(page, null, 2)}</pre>
-    </>
+    <div className={'flex flex-col space-y-8 items-center'}>
+      {page.components.map((component) => componentRenderer(component))}
+    </div>
   );
 }
 
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   const pageLocale = locale ?? DEFAULT_LANGUAGE;
-
-  try {
-    const [page, webConfig] = await Promise.allSettled([
-      Cms.getPageContent(KENTICO_HARDCODED_PAGES.HOME, {
-        params: {
-          language: pageLocale,
-        },
-      }),
-      Cms.getConfig(),
-    ]);
-
-    return {
-      props: {
-        page: page.status === 'fulfilled' ? page.value : null,
-        webConfig: webConfig.status === 'fulfilled' ? webConfig.value : null,
+  const [page, webConfig] = await Promise.allSettled([
+    Cms.getPageContent<KenticoPageLayoutDTO>(KENTICO_HARDCODED_PAGES.HOME, {
+      params: {
+        language: pageLocale,
       },
-    };
-  } catch (error) {
-    return { notFound: true };
-  }
+    }),
+    Cms.getConfig(),
+  ]);
+
+  return {
+    props: {
+      page: page.status === 'fulfilled' ? page.value : null,
+      webConfig: webConfig.status === 'fulfilled' ? webConfig.value : null,
+    },
+  };
+};
+
+Home.getLayout = function getLayout(page: ReactElement, config: any) {
+  return <Layout config={config}>{page}</Layout>;
 };
 
 export default Home;

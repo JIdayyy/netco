@@ -1,4 +1,3 @@
-@import '@onrewind/ui/lib/onrewind-ui.css';
 
 @tailwind base;
 @tailwind components;
@@ -7,4 +6,8 @@
 
 :root {
   --secondary: #0062bf;
+}
+
+a {
+  @apply text-white hover:text-blue-500;
 }
