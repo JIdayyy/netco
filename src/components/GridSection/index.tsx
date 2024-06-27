@@ -28,8 +28,8 @@ function GridSectionCategoriesTabs({
           onClick={() => setSelected(category)}
           className={`${
             selected === category
-              ? 'bg-blue-500 text-white'
-              : 'text-gray-300 hover:bg-blue-500 hover:text-white'
+              ? 'bg-slate-500 text-white'
+              : 'text-gray-300 hover:bg-slate-500 hover:text-white'
           } px-3 py-1 rounded-sm capitalize`}
         >
           {category.name}

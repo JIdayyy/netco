@@ -15,7 +15,7 @@ export default function SignIn() {
         />
       </div>
 
-      <div className="flex flex-grow items-center min-h-screen bg-blue-900 dark:bg-gray-900">
+      <div className="flex flex-grow items-center min-h-screen bg-slate-950 ">
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
             <div className="text-center">
@@ -47,7 +47,7 @@ export default function SignIn() {
                     name="email"
                     id="email"
                     placeholder="you@company.com"
-                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 text-black dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-slate-100 focus:border-slate-300 dark:bg-gray-700 text-black dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                   />
                 </div>
                 <div className="mb-6">
@@ -57,7 +57,7 @@ export default function SignIn() {
                     </label>
                     <a
                       href="#!"
-                      className="text-sm text-white focus:outline-none focus:text-blue-500 hover:text-blue-500 "
+                      className="text-sm text-white focus:outline-none focus:text-slate-500 hover:text-slate-500 "
                     >
                       Forgot password?
                     </a>
@@ -67,24 +67,21 @@ export default function SignIn() {
                     name="password"
                     id="password"
                     placeholder="Your Password"
-                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 text-black dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+                    className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-slate-100 focus:border-slate-300 dark:bg-gray-700 text-black dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                   />
                 </div>
                 <div className="mb-6">
                   <button
                     onClick={() => router.push('/')}
                     type="button"
-                    className="w-full px-3 py-4 text-white bg-blue-500 rounded-md focus:bg-blue-600 focus:outline-none"
+                    className="w-full px-3 py-4 text-white bg-primary rounded-md focus:bg-slate-600 focus:outline-none"
                   >
                     Sign in
                   </button>
                 </div>
                 <p className="text-sm text-center text-white">
                   Don&apos;t have an account yet?{' '}
-                  <a
-                    href="#!"
-                    className="text-blue-400 focus:outline-none focus:underline focus:text-blue-500 dark:focus:border-blue-800"
-                  >
+                  <a href="#!" className="text-primary focus:outline-none focus: ">
                     Sign up
                   </a>
                   .

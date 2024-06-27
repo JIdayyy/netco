@@ -14,7 +14,7 @@ function Footer({ config }: Readonly<{ config: WebConfig }>) {
       linksClassName={'text-white'}
       socialIconClassName={'text-white'}
       subItemClassName={'text-white'}
-      className={'from-blue-600 text-white via-blue-800 to-blue-600 bg-gradient-to-r mt-24'}
+      className={'from-slate-600 text-white via-slate-800 to-slate-600 bg-gradient-to-r mt-24'}
       links={{
         secondRow: [
           {

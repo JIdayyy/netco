@@ -19,7 +19,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
         'rounded-md  border border-gray-700 ease-in cursor-pointer aspect-video   relative overflow-hidden'
       }
     >
-      <div className={'w-full z-[50] absolute top-0 bg-blue-500 h-[10px]'}></div>
+      <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
 
       <div
         className={

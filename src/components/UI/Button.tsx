@@ -13,14 +13,14 @@ export default function Button({ children, size, className, ...rest }: ButtonPro
   };
 
   const variants = {
-    primary: 'bg-blue-500 hover:bg-blue-600',
+    primary: 'bg-slate-500 hover:bg-slate-600',
     secondary: 'bg-gray-500 hover:bg-gray-600',
     danger: 'bg-red-500 hover:bg-red-600',
   };
 
   return (
     <button
-      className={`rounded-sm hover:bg-blue-600 ${sizes[size]} ${
+      className={`rounded-sm hover:bg-slate-600 ${sizes[size]} ${
         variants[rest.variant]
       } text-white cursor-pointer
     } ${className}`}

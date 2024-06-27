@@ -16,7 +16,7 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
     <nav
       className={`w-full ${
         !isScrolled || isMenuOpen
-          ? 'from-blue-600 via-blue-800 to-blue-600 bg-gradient-to-r'
+          ? 'from-slate-600 via-slate-800 to-slate-600 bg-gradient-to-r'
           : 'from-black via-black to-transparent  bg-gradient-to-b'
       } fixed top-0 z-[9999] transition-all ease-in-out duration-300 text-white flex justify-center`}
     >
@@ -62,7 +62,7 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
             variant={'primary'}
             onClick={() => router.push('/auth/signin')}
             className={
-              'bg-blue-500 cursor-pointer desktop:!flex hidden  items-center space-x-2 justify-center align-middle px-2 py-1 text-white  rounded-sm'
+              'bg-slate-500 cursor-pointer desktop:!flex hidden  items-center space-x-2 justify-center align-middle px-2 py-1 text-white  rounded-sm'
             }
           >
             <p>Sign In</p>

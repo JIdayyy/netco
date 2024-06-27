@@ -87,7 +87,7 @@ export default function Slider() {
 
                 <button
                   className={
-                    'bg-blue-500 flex text-xs tablet:text-base space-x-2 items-center align-middle justify-center text-white px-2 py-1 rounded-sm'
+                    'bg-slate-500 flex text-xs tablet:text-base space-x-2 items-center align-middle justify-center text-white px-2 py-1 rounded-sm'
                   }
                 >
                   <span>Watch</span> <IoPlay size={20} />

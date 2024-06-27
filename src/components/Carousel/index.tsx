@@ -56,7 +56,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
           'rounded-md border border-gray-700  cursor-pointer aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
         }
       >
-        <div className={'w-full z-[50] absolute top-0 bg-blue-500 h-[10px]'}></div>
+        <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
 
         <div
           className={
@@ -94,7 +94,7 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
         'rounded-md border border-gray-700  cursor-pointer  aspect-video  relative overflow-hidden'
       }
     >
-      <div className={'w-full z-[50] absolute top-0 bg-blue-500 h-[10px]'}></div>
+      <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
       <div
         className={
           'absolute top-0 left-0 w-full p-2 h-full flex flex-col justify-end flex-end text-white z-40'

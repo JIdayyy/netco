@@ -8,7 +8,7 @@ import GridSection from '$components/GridSection';
 
 function NotFound({ itemType }: { itemType: string }) {
   return (
-    <div className={'w-full  h-[100px] bg-blue-500 text-white'}>
+    <div className={'w-full  h-[100px] bg-slate-500 text-white'}>
       <p>Component {itemType} not found</p>
     </div>
   );
