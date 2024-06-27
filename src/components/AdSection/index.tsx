@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function AdSection(props: AdvertisementSection) {
   return (
-    <Link href={props.redirectionTarget} target={'_blank'} className={'w-full'}>
+    <Link href={props.redirectionTarget} target={'_blank'} className={'w-full'} legacyBehavior>
       <Image
         src={props.image[0].image.url}
         alt={props.image[0].image.name}

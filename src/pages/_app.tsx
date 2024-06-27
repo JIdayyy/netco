@@ -1,17 +1,17 @@
+import { ReactElement, ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { WebConfig } from '@origins-digital/types/web-experience';
+import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
+import Layout from 'src/components/Layout';
 
-import { ViewportProvider } from '@onrewind/ui';
-
+import 'react-multi-carousel/lib/styles.css';
 import '../styles.css';
 
-import Layout from '$components/layout';
 import { AppContextProvider } from '$contexts/AppContext';
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 60 * 1000,
@@ -19,21 +19,23 @@ const queryClient = new QueryClient({
   },
 });
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  const webConfig: WebConfig = pageProps.webConfig;
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement, props: any) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <>
-      {/* <DefaultSeo title={webConfig.SEO.title} description={webConfig.SEO.description} />*/}
-
       <AppContextProvider>
         <QueryClientProvider client={queryClient}>
-          <ViewportProvider>
-            <NextNProgress color="var(--secondary)" />
-            <Layout config={webConfig}>
-              <Component {...pageProps} />
-            </Layout>
-          </ViewportProvider>
+          <NextNProgress color="var(--secondary)" />
+          {getLayout(<Component {...pageProps} />, pageProps.webConfig)}
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </AppContextProvider>

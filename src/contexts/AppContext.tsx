@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 const appContext = createContext<{
   isScrolled: boolean;
@@ -6,7 +6,7 @@ const appContext = createContext<{
   toggleMenu: () => void;
 } | null>(null);
 
-function AppContextProvider({ children }) {
+function AppContextProvider({ children }: { children: ReactNode }) {
   const [appState, setAppState] = useState({
     isScrolled: false,
     isMenuOpen: false,
