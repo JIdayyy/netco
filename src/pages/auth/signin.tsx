@@ -15,7 +15,7 @@ export default function SignIn() {
         />
       </div>
 
-      <div className="flex flex-grow items-center min-h-screen bg-slate-950 ">
+      <div className="flex flex-grow items-center min-h-screen bg-background">
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
             <div className="text-center">
