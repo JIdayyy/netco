@@ -4,12 +4,16 @@ const appContext = createContext<{
   isScrolled: boolean;
   isMenuOpen: boolean;
   toggleMenu: () => void;
+  isAuth: boolean;
+  handleSignIn: () => void;
+  handleSignOut: () => void;
 } | null>(null);
 
 function AppContextProvider({ children }: { children: ReactNode }) {
   const [appState, setAppState] = useState({
     isScrolled: false,
     isMenuOpen: false,
+    isAuth: false,
   });
 
   useEffect(() => {
@@ -31,11 +35,21 @@ function AppContextProvider({ children }: { children: ReactNode }) {
     setAppState((state) => ({ ...state, isMenuOpen: !state.isMenuOpen }));
   };
 
+  const handleSignIn = () => {
+    setAppState((state) => ({ ...state, isAuth: true }));
+  };
+
+  const handleSignOut = () => {
+    setAppState((state) => ({ ...state, isAuth: false }));
+  };
+
   return (
     <appContext.Provider
       value={{
         ...appState,
         toggleMenu,
+        handleSignIn,
+        handleSignOut,
       }}
     >
       {children}

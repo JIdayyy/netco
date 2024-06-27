@@ -93,3 +93,5 @@ B
 src/pages/test.tsx,a/e/aece0f265e341f55f5ee4a932b8922336cda8bc6
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
+@
+src/globals.d.ts,4/b/4b6f164771d40df4f03b238cc7beaba0a83137c3

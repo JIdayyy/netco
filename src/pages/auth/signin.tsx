@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import { useAppContext } from '$contexts/AppContext';
+
 export default function SignIn() {
   const router = useRouter();
+  const { handleSignIn } = useAppContext();
   return (
     <div className={'text-white w-screen h-screen flex'}>
       <div className={'relative flex items-center align-middle justify-center w-1/2 h-full'}>
@@ -72,7 +75,10 @@ export default function SignIn() {
                 </div>
                 <div className="mb-6">
                   <button
-                    onClick={() => router.push('/')}
+                    onClick={() => {
+                      handleSignIn();
+                      router.push('/');
+                    }}
                     type="button"
                     className="w-full px-3 py-4 text-white bg-primary rounded-md focus:bg-slate-600 focus:outline-none"
                   >
