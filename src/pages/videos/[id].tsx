@@ -10,7 +10,6 @@ export default function VideoPage() {
     <div>
       <Player
         muted={false}
-        poster={''}
         src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
       />
     </div>

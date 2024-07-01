@@ -2,17 +2,13 @@ import ReactPlayer from 'react-player';
 
 export default function Player({
   src,
-  poster,
   muted,
-}: {
+}: Readonly<{
   src: string;
-  poster: string;
   muted: boolean;
-}) {
+}>) {
   return (
     <ReactPlayer
-      className="react-player"
-      poster={poster}
       url={src}
       playing={true}
       controls={false}

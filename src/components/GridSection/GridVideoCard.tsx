@@ -46,7 +46,6 @@ function VideoCard(props: Readonly<any>) {
             <div className={'w-full overflow-hidden h-[300px] relative'}>
               <Player
                 muted={muted}
-                poster={props.poster}
                 src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
               />
               <div
@@ -109,7 +108,9 @@ function VideoCard(props: Readonly<any>) {
                 </div>
               </div>
 
-              <p className={'text-xs flex flex-col whitespace-pre-wrap'}>{DEFAULT_TEXT}</p>
+              <p className={'text-xs flex flex-col whitespace-pre-wrap font-thin'}>
+                {DEFAULT_TEXT}
+              </p>
             </div>
           </div>
         </Dialog>

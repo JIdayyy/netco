@@ -40,7 +40,8 @@ function GridSectionCategoriesTabs({
 }
 
 const getTwoRandomVideos = (videos: OriginsVideoCard[]) => {
-  return videos.sort(() => Math.random() - Math.random()).slice(0, 2);
+  const videosCopy = [...videos];
+  return videosCopy.sort(() => Math.random() - Math.random()).slice(0, 2);
 };
 
 export default function GridSection(config: Readonly<SectionDynamicGridWithCategory>) {
@@ -77,7 +78,7 @@ export default function GridSection(config: Readonly<SectionDynamicGridWithCateg
         onClick={handleMoreVideos}
         size={'sm'}
         variant={'primary'}
-        className={` transform translate-y-2`}
+        className={` transform translate-y-2 mb-10`}
       >
         Show more
       </Button>

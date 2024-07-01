@@ -4,13 +4,13 @@ import Link from 'next/link';
 
 export default function AdSection(props: Readonly<AdvertisementSection>) {
   return (
-    <Link href={props.redirectionTarget} target={'_blank'} className={'w-full'} legacyBehavior>
+    <Link href={props.redirectionTarget} target={'_blank'} className={'w-full my-28'}>
       <Image
         src={props.image[0].image.url}
         alt={props.image[0].image.name}
         width={props.image[0].image.width}
         height={props.image[0].image.height}
-        className={'cursor-pointer'}
+        className={'cursor-pointer my-24'}
       />
     </Link>
   );

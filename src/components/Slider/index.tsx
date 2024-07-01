@@ -76,7 +76,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
 export default function Slider({ items }: SlideSection) {
   return (
     <div className={'flex my-12 flex-col w-full'}>
-      <Carousel showDots responsive={responsive}>
+      <Carousel responsive={responsive}>
         {items.map((item) => renderer({ item: item as OriginsVideoCard }))}
       </Carousel>
     </div>

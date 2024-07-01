@@ -24,7 +24,7 @@ export default function Dialog({ children, handleDialogClose }: IProps) {
     >
       <motion.div
         className={
-          'bg-background pointer-events-auto z-[9998] relative rounded-xl overflow-hidden w-[55%]'
+          'bg-background pointer-events-auto z-[9998] relative rounded-xl overflow-hidden tablet:w-[70%] w-[90%] desktop:w-[55%]'
         }
         ref={ref}
       >
