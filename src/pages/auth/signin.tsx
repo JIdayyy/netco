@@ -10,12 +10,12 @@ export default function SignIn() {
     <div className={'text-white relative w-screen bg-background h-screen flex'}>
       <div
         className={
-          'absolute h-[200px] tablet:h-screen top-0 left-0 brightness-10  tablet:relative flex items-center align-middle justify-center w-full z-0 tablet:w-1/2 h-full'
+          'absolute tablet:h-screen top-0 left-0 brightness-10  tablet:relative flex items-center align-middle justify-center w-full z-0 tablet:w-1/2 h-full'
         }
       >
         <Image
           layout={'fill'}
-          className={'object-cover brightness-50'}
+          className={'object-cover brightness-[01]'}
           src={
             'https://dev-onrewind.imgix.net/thumbnails/1c08d7e1-0b44-4874-b10c-a72e55b23c24/img-59554.png'
           }

@@ -2,7 +2,7 @@ import { AdvertisementSection } from '@origins-digital/types/ott';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function AdSection(props: AdvertisementSection) {
+export default function AdSection(props: Readonly<AdvertisementSection>) {
   return (
     <Link href={props.redirectionTarget} target={'_blank'} className={'w-full'} legacyBehavior>
       <Image

@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { KenticoPageLayoutDTO } from '@origins-digital/types/ott';
 import { WebConfig } from '@origins-digital/types/web-experience';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import Cms from 'src/services/Cms';
 
 import Layout from '$components/Layout';
 import { componentRenderer } from '$utils/components';
-import { DEFAULT_LANGUAGE, KENTICO_HARDCODED_PAGES } from '$utils/constants';
+import { KENTICO_HARDCODED_PAGES } from '$utils/constants';
 
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -22,12 +22,11 @@ function Home({ page }: Readonly<IProps>): JSX.Element | null {
   );
 }
 
-export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
-  const pageLocale = locale ?? DEFAULT_LANGUAGE;
+export const getStaticProps = async () => {
   const [page] = await Promise.allSettled([
     Cms.getPageContent<KenticoPageLayoutDTO>(KENTICO_HARDCODED_PAGES.HOME, {
       params: {
-        language: pageLocale,
+        language: 'en-EN',
       },
     }),
   ]);
