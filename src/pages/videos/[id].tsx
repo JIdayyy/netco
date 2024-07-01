@@ -8,7 +8,11 @@ import Player from '$components/Player';
 export default function VideoPage() {
   return (
     <div>
-      <Player muted={false} poster={''} src={'/videos/video_preview.mp4'} />
+      <Player
+        muted={false}
+        poster={''}
+        src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
+      />
     </div>
   );
 }

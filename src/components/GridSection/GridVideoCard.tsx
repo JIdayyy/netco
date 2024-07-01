@@ -44,7 +44,11 @@ function VideoCard(props: Readonly<any>) {
         <Dialog handleDialogClose={handleDialogClose}>
           <div className={'w-full h-full'}>
             <div className={'w-full overflow-hidden h-[300px] relative'}>
-              <Player muted={muted} poster={props.poster} src={'/videos/video_preview.mp4'} />
+              <Player
+                muted={muted}
+                poster={props.poster}
+                src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
+              />
               <div
                 className={
                   'bg-gradient-to-b absolute w-full h-full z-[998] from-transparent  to-background'
