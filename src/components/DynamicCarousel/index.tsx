@@ -21,17 +21,14 @@ const getResponsive = (format: string): ResponsiveType => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: format !== 'portrait' ? 6 : 5,
-      partialVisibilityGutter: 40,
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
       items: format !== 'portrait' ? 4 : 4,
-      partialVisibilityGutter: 40,
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
       items: 2,
-      partialVisibilityGutter: 40,
     },
   };
 };
@@ -43,6 +40,7 @@ export default function DynamicCarousel(props: Readonly<SectionDynamicCarousel>)
         {props.name}
       </h2>
       <MultiCarousel
+        centerMode={true}
         itemClass={'mr-6'}
         className={'tablet:px-5 desktop:px-10 px-2 py-8'}
         responsive={getResponsive(props.format)}

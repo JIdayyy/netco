@@ -31,9 +31,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
       return (
         <div
           key={item._kenticoId}
-          className={
-            'w-full flex justify-center align-middle items-center h-screen tablet:h-[500px] relative'
-          }
+          className={'w-full flex justify-center align-middle items-center h-[500px] relative'}
         >
           <div
             className={
