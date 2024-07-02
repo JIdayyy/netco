@@ -30,7 +30,7 @@ const getResponsive = (format: string): ResponsiveType => {
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: 1,
+      items: 2,
       partialVisibilityGutter: 40,
     },
   };
