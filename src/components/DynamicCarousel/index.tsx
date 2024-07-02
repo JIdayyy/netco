@@ -16,41 +16,48 @@ import Player from '$components/Player';
 import Button from '$components/UI/Button';
 import { IMG_PLACEHOLDER } from '$utils/constants';
 
-const responsive: ResponsiveType = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 768 },
-    items: 3,
-  },
-  mobile: {
-    breakpoint: { max: 768, min: 0 },
-    items: 2,
-  },
+const getResponsive = (format: string): ResponsiveType => {
+  return {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: format !== 'portrait' ? 6 : 5,
+      partialVisibilityGutter: 40,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 768 },
+      items: format !== 'portrait' ? 4 : 4,
+      partialVisibilityGutter: 40,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
+      partialVisibilityGutter: 40,
+    },
+  };
 };
 
 export default function DynamicCarousel(props: Readonly<SectionDynamicCarousel>) {
   return (
     <div className={'w-full max-w-7xl'}>
-      <h2 className={'font-bold px-8 uppercase text-white'}>{props.name}</h2>
+      <h2 className={'font-bold px-8 transform translate-y-4 uppercase text-white'}>
+        {props.name}
+      </h2>
       <MultiCarousel
         itemClass={'mr-6'}
         className={'tablet:px-5 desktop:px-10 px-2 py-8'}
-        responsive={responsive}
+        responsive={getResponsive(props.format)}
       >
         {props.Videos
-          ? props.Videos.map((item) => {
+          ? [...props.Videos, ...props.Videos].map((item) => {
               switch (item.itemType) {
                 case 'video':
-                  return <VideoCard key={item.itemId} {...item} />;
+                  return <VideoCard format={props.format} key={item.itemId} {...item} />;
               }
             })
-          : props.Playlists.map((item) => {
+          : [...props.Playlists, ...props.Playlists].map((item) => {
               switch (item.itemType) {
                 case 'playlist':
-                  return <PlaylistCard key={item.itemId} {...item} />;
+                  return <PlaylistCard format={props.format} key={item.itemId} {...item} />;
               }
             })}
       </MultiCarousel>
@@ -58,10 +65,15 @@ export default function DynamicCarousel(props: Readonly<SectionDynamicCarousel>)
   );
 }
 
-function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
+function PlaylistCard(
+  props: Readonly<
+    OriginsPlaylistCard & {
+      format: 'portrait' | 'landscape';
+    }
+  >,
+) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [muted, setMuted] = useState(false);
-
   const handleDialogOpen = () => {
     setIsDialogOpen(true);
   };
@@ -80,9 +92,9 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
       whileHover={{ scale: 1.05 }}
       initial={{ scale: 0.9, opacity: 0.5 }}
       animate={{ scale: 1, opacity: 1 }}
-      className={
-        'rounded-md border border-gray-700  cursor-pointer  aspect-video  relative overflow-hidden'
-      }
+      className={`rounded-md border border-gray-700  cursor-pointer  ${
+        props.format === 'portrait' ? 'aspect-portrait' : 'aspect-video'
+      }  relative overflow-hidden`}
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
@@ -162,12 +174,12 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
         }
       >
         <div>
-          <h3 className={'font-bold'}>{props.name}</h3>
+          <h3 className={'font-bold text-sm tablet:text-base'}>{props.name}</h3>
         </div>
       </div>
       <Image
         layout={'fill'}
-        className={''}
+        className={'object-cover'}
         src={props.thumbnail || IMG_PLACEHOLDER}
         alt={props.name}
       />
@@ -180,7 +192,13 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
   );
 }
 
-function VideoCard(props: Readonly<OriginsVideoCard>) {
+function VideoCard(
+  props: Readonly<
+    OriginsVideoCard & {
+      format: 'portrait' | 'landscape';
+    }
+  >,
+) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [muted, setMuted] = useState(false);
 
@@ -200,9 +218,9 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
     <motion.div
       onClick={handleDialogOpen}
       whileHover={{ scale: 1.05 }}
-      className={
-        'rounded-md border border-gray-700  cursor-pointer aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
-      }
+      className={`rounded-md border border-gray-700  cursor-pointer ${
+        props.format === 'portrait' ? 'aspect-portrait' : 'aspect-video'
+      } aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden`}
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
@@ -262,7 +280,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
             <div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
               <div className={'flex justify-between items-center align-middle w-full'}>
                 <div className={'flex justify-center space-x-2 align-middle items-center'}>
-                  <h3 className={'font-bold text-xl'}>{props.name}</h3>{' '}
+                  <h3 className={'font-bold text-sm tablet:text-base'}>{props.name}</h3>{' '}
                   <MdOutlineHighQuality size={25} className={'text-gray-400'} />
                   <MdOutlineChat size={20} className={'text-gray-400'} />
                 </div>
@@ -286,7 +304,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
         }
       >
         <div className={'w-full flex items-center align-middle justify-between'}>
-          <h3 className={'font-bold text-md'}>{props.name}</h3>
+          <h3 className={' text-sm tablet:text-base'}>{props.name}</h3>
           <p className={'text-xs'}>{props.duration}</p>
         </div>
       </div>

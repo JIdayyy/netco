@@ -31,15 +31,19 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
       return (
         <div
           key={item._kenticoId}
-          className={'w-full flex justify-center align-middle items-center h-[500px] relative'}
+          className={
+            'w-full flex justify-center align-middle items-center h-screen tablet:h-[500px] relative'
+          }
         >
           <div
             className={
-              'absolute px-10 space-y-1 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-1/2 z-50'
+              'absolute px-10 space-y-1 py-10 tablet:py-0 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-full tablet:h-1/2 z-50'
             }
           >
             <p
-              className={'text-white capitalize tablet:text-2xl desktop:text-4xl text-xl font-bold'}
+              className={
+                'text-white capitalize tablet:text-2xl desktop:text-4xl text-2xl font-bold'
+              }
             >
               {item.name}
             </p>
@@ -75,7 +79,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
 
 export default function Slider({ items }: SlideSection) {
   return (
-    <div className={'flex my-12 flex-col w-full'}>
+    <div className={'flex tablet:my-12 flex-col w-full'}>
       <Carousel responsive={responsive}>
         {items.map((item) => renderer({ item: item as OriginsVideoCard }))}
       </Carousel>

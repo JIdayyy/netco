@@ -19,7 +19,7 @@ export default function Dialog({ children, handleDialogClose }: IProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className={
-        'fixed top-0 left-0 bg-black z-[999] bg-opacity-50 w-screen h-screen flex flex-col justify-center items-center align-middle'
+        'fixed top-0 left-0 bg-black z-[8999] bg-opacity-50 w-screen h-screen flex flex-col justify-center items-center align-middle'
       }
     >
       <motion.div

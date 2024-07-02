@@ -26,7 +26,7 @@ const responsive: ResponsiveType = {
   mobile: {
     breakpoint: { max: 768, min: 0 },
     paritialVisibilityGutter: 30,
-    items: 3,
+    items: 1,
   },
 };
 

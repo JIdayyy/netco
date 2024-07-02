@@ -15,10 +15,10 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
   return (
     <nav
       className={`w-full ${
-        !isScrolled || isMenuOpen
-          ? 'from-slate-600 via-slate-800 to-slate-600 bg-gradient-to-r'
-          : 'from-black via-black to-transparent  bg-gradient-to-b'
-      } fixed top-0 z-[999] transition-all ease-in-out duration-300 text-white flex justify-center`}
+        !isScrolled && !isMenuOpen
+          ? 'from-black via-black to-transparent  bg-gradient-to-b'
+          : 'from-slate-600 via-slate-800 to-slate-600 bg-gradient-to-r'
+      } fixed top-0 z-[8999] transition-all ease-in-out duration-300 text-white flex justify-center`}
     >
       <div
         className={
