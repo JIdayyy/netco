@@ -5,6 +5,7 @@ import { IoPlay } from 'react-icons/io5';
 import { MdOutlineChat, MdOutlineHighQuality } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import Dialog from '$components/Dialog';
 import Player from '$components/Player';
@@ -15,7 +16,7 @@ function VideoCard(props: Readonly<any>) {
   const [isHover, setIsHover] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [muted, setMuted] = useState(false);
-
+  const router = useRouter();
   const handleDialogOpen = () => {
     setIsDialogOpen(true);
   };
@@ -60,6 +61,7 @@ function VideoCard(props: Readonly<any>) {
               >
                 <div className={'flex justify-center items-center align-middle space-x-2'}>
                   <Button
+                    onClick={() => router.push('/videos/1')}
                     className={'flex justify-center items-center'}
                     size={'md'}
                     variant={'primary'}
