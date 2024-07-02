@@ -37,7 +37,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
         >
           <div
             className={
-              'absolute px-10 space-y-1 py-10 tablet:py-0 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-full tablet:h-1/2 z-50'
+              'absolute px-10 space-y-1 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-1/2 z-50'
             }
           >
             <p
@@ -79,7 +79,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
 
 export default function Slider({ items }: SlideSection) {
   return (
-    <div className={'flex tablet:my-12 flex-col w-full'}>
+    <div className={'flex my-12 flex-col w-full'}>
       <Carousel responsive={responsive}>
         {items.map((item) => renderer({ item: item as OriginsVideoCard }))}
       </Carousel>
