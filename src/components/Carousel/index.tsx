@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import Dialog from '$components/Dialog';
+import FakeVideoDialog from '$components/Dialog/FakeVideoDialog';
 import Player from '$components/Player';
 import Button from '$components/UI/Button';
 import { IMG_PLACEHOLDER } from '$utils/constants';
@@ -59,6 +60,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
   };
 
   const handleDialogClose = () => {
+    console.log('CLOSE');
     setIsDialogOpen(false);
   };
 
@@ -76,76 +78,13 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <div className={'w-full h-full'}>
-            <div className={'w-full overflow-hidden h-[300px] relative'}>
-              <Player
-                muted={muted}
-                src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
-              />
-              <div
-                className={
-                  'bg-gradient-to-b absolute w-full h-full z-[998] from-transparent  to-background'
-                }
-              />
-              <div
-                className={
-                  'flex space-x-2 w-full justify-between items-center absolute bottom-5 px-10 z-[999]'
-                }
-              >
-                <div className={'flex justify-center items-center align-middle space-x-2'}>
-                  <Button
-                    className={'flex justify-center items-center'}
-                    size={'md'}
-                    variant={'primary'}
-                  >
-                    WATCH <IoPlay size={20} />
-                  </Button>
-                  <button
-                    className={
-                      'rounded-full hover:bg-white  transition-all  border-2 border-gray-500 p-1'
-                    }
-                  >
-                    <BiLike size={25} className={'text-white hover:text-black  transition-all'} />
-                  </button>
-                </div>
-                <button
-                  onClick={handleMute}
-                  className={
-                    'rounded-full hover:bg-white  transition-all  border-2 border-gray-500 p-1'
-                  }
-                >
-                  {muted ? (
-                    <BiVolumeMute
-                      size={25}
-                      className={'text-white hover:text-black  transition-all'}
-                    />
-                  ) : (
-                    <BiVolumeFull
-                      size={25}
-                      className={'text-white hover:text-black  transition-all'}
-                    />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
-              <div className={'flex justify-between items-center align-middle w-full'}>
-                <div className={'flex justify-center space-x-2 align-middle items-center'}>
-                  <h3 className={'font-bold text-xl'}>{props.name}</h3>{' '}
-                  <MdOutlineHighQuality size={25} className={'text-gray-400'} />
-                  <MdOutlineChat size={20} className={'text-gray-400'} />
-                </div>
-                <div>
-                  <p className={'text-xs text-gray-400'}>Duration: {props.duration}</p>
-                </div>
-              </div>
-
-              <p className={'text-xs flex flex-col whitespace-pre-wrap font-thin'}>
-                {DEFAULT_TEXT}
-              </p>
-            </div>
-          </div>
+          <FakeVideoDialog
+            handleMute={handleMute}
+            muted={muted}
+            duration={props.duration || '00:00'}
+            views={(props as any).views || 0}
+            name={props.name}
+          />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
@@ -200,76 +139,13 @@ function CategoryCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <div className={'w-full h-full'}>
-            <div className={'w-full overflow-hidden h-[300px] relative'}>
-              <Player
-                muted={muted}
-                src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
-              />
-              <div
-                className={
-                  'bg-gradient-to-b absolute w-full h-full z-[998] from-transparent  to-background'
-                }
-              />
-              <div
-                className={
-                  'flex space-x-2 w-full justify-between items-center absolute bottom-5 px-10 z-[999]'
-                }
-              >
-                <div className={'flex justify-center items-center align-middle space-x-2'}>
-                  <Button
-                    className={'flex justify-center items-center'}
-                    size={'md'}
-                    variant={'primary'}
-                  >
-                    WATCH <IoPlay size={20} />
-                  </Button>
-                  <button
-                    className={
-                      'rounded-full hover:bg-white  transition-all  border-2 border-gray-500 p-1'
-                    }
-                  >
-                    <BiLike size={25} className={'text-white hover:text-black  transition-all'} />
-                  </button>
-                </div>
-                <button
-                  onClick={handleMute}
-                  className={
-                    'rounded-full hover:bg-white  transition-all  border-2 border-gray-500 p-1'
-                  }
-                >
-                  {muted ? (
-                    <BiVolumeMute
-                      size={25}
-                      className={'text-white hover:text-black  transition-all'}
-                    />
-                  ) : (
-                    <BiVolumeFull
-                      size={25}
-                      className={'text-white hover:text-black  transition-all'}
-                    />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            <div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
-              <div className={'flex justify-between items-center align-middle w-full'}>
-                <div className={'flex justify-center space-x-2 align-middle items-center'}>
-                  <h3 className={'font-bold text-xl'}>{props.name}</h3>{' '}
-                  <MdOutlineHighQuality size={25} className={'text-gray-400'} />
-                  <MdOutlineChat size={20} className={'text-gray-400'} />
-                </div>
-                <div>
-                  <p className={'text-xs text-gray-400'}>Duration: {props.duration}</p>
-                </div>
-              </div>
-
-              <p className={'text-xs flex flex-col whitespace-pre-wrap font-thin'}>
-                {DEFAULT_TEXT}
-              </p>
-            </div>
-          </div>
+          <FakeVideoDialog
+            handleMute={handleMute}
+            muted={muted}
+            duration={'00:00'}
+            views={0}
+            name={props.name}
+          />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'} />

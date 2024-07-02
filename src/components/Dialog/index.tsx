@@ -24,12 +24,15 @@ export default function Dialog({ children, handleDialogClose }: IProps) {
     >
       <motion.div
         className={
-          'bg-background pointer-events-auto z-[9998] relative rounded-xl overflow-hidden tablet:w-[70%] w-[90%] desktop:w-[55%]'
+          'bg-background pointer-events-auto shadow-2xl shadow-zinc-800 border-slate-600 border-2 overflow-y-scroll max-h-[98vh] z-[9998] relative rounded-xl overflow-hidden tablet:w-[70%] w-[95%] desktop:w-[55%]'
         }
         ref={ref}
       >
         <button
-          onClick={() => handleDialogClose()}
+          onClick={() => {
+            console.log('click');
+            handleDialogClose();
+          }}
           className={'absolute bg-background rounded-full right-3 top-3 z-[999] p-2 w-fit h-fit'}
         >
           <IoClose className={'text-white'} />
