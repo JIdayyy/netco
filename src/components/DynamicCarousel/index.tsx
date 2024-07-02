@@ -28,7 +28,7 @@ const getResponsive = (format: string): ResponsiveType => {
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: 2,
+      items: 1,
     },
   };
 };
@@ -41,8 +41,8 @@ export default function DynamicCarousel(props: Readonly<SectionDynamicCarousel>)
       </h2>
       <MultiCarousel
         centerMode={true}
-        itemClass={'mr-6'}
-        className={'tablet:px-5 desktop:px-10 px-2 py-8'}
+        itemClass={'tablet:mr-6 mr-2'}
+        className={'px-2 py-8'}
         responsive={getResponsive(props.format)}
       >
         {props.Videos

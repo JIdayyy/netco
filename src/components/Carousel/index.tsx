@@ -34,11 +34,7 @@ export default function Carousel(props: Readonly<any>) {
   return (
     <div className={'w-full max-w-7xl'}>
       <h2 className={'font-bold px-8 uppercase text-white'}>{props.name}</h2>
-      <MultiCarousel
-        itemClass={'mr-6'}
-        className={'tablet:px-5 desktop:px-10 px-2 py-8'}
-        responsive={responsive}
-      >
+      <MultiCarousel itemClass={'mr-6'} className={' px-2 py-8'} responsive={responsive}>
         {props.items.map((item: any) => {
           switch (item.itemType) {
             case 'video':

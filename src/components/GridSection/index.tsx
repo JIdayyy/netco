@@ -57,9 +57,7 @@ export default function GridSection(config: Readonly<SectionDynamicGridWithCateg
   };
   return (
     <div
-      className={
-        'w-full max-w-7xl flex flex-col justify-center items-center tablet:px-5 desktop:px-10 px-2 py-5 lg:px-0'
-      }
+      className={'w-full max-w-7xl flex flex-col justify-center items-center  px-2 py-5 lg:px-0'}
     >
       <p className={'text-white w-full text-left uppercase font-bold'}>{config.title}</p>
       <GridSectionCategoriesTabs
