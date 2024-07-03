@@ -16,7 +16,7 @@ function Home({ page }: Readonly<IProps>): JSX.Element | null {
   }
 
   return (
-    <div className={'flex flex-col space-y-8 items-center'}>
+    <div className={'flex flex-col  items-center'}>
       {page.components.map((component) => componentRenderer(component))}
     </div>
   );

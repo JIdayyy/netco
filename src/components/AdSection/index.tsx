@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function AdSection(props: Readonly<AdvertisementSection>) {
   return (
-    <Link href={props.redirectionTarget} target={'_blank'} className={'w-full my-28'}>
+    <div className={'w-full my-6'}>
       <Image
         src={props.image[0].image.url}
         alt={props.image[0].image.name}
@@ -14,8 +14,8 @@ export default function AdSection(props: Readonly<AdvertisementSection>) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         height={props.image[0].image.height + 20}
-        className={'cursor-pointer my-24'}
+        className={'cursor-pointer'}
       />
-    </Link>
+    </div>
   );
 }

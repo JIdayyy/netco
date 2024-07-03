@@ -33,6 +33,7 @@ function MenuItem({ item, onClick }: MenuItemProps) {
 
 export default function Menu({ config }: { config: WebConfig['header'] }) {
   const { isMenuOpen, toggleMenu } = useAppContext();
+  const router = useRouter();
   const [selected, setSelected] = React.useState<WebConfig['header']['menuItems'][number] | null>(
     null,
   );
@@ -97,7 +98,10 @@ export default function Menu({ config }: { config: WebConfig['header'] }) {
           </nav>
           <button
             className={'w-full bg-primary text-white text-xl rounded-sm'}
-            onClick={toggleMenu}
+            onClick={() => {
+              toggleMenu();
+              router.push('/auth/signin');
+            }}
           >
             Sign In
           </button>

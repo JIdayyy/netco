@@ -77,7 +77,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
 
 export default function Slider({ items }: SlideSection) {
   return (
-    <div className={'flex tablet:mb-12 mb-0 mt-0 tablet:mt-6 flex-col w-full'}>
+    <div className={'flex tablet:mb-6 mb-0 mt-0 tablet:mt-6 flex-col w-full'}>
       <Carousel responsive={responsive}>
         {items.reverse().map((item) => renderer({ item: item as OriginsVideoCard }))}
       </Carousel>
