@@ -1,27 +1,84 @@
+import { useState } from 'react';
 import { BiLike, BiVolumeFull, BiVolumeMute } from 'react-icons/bi';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import { IoPlay } from 'react-icons/io5';
 import { MdOutlineChat, MdOutlineHighQuality } from 'react-icons/md';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import Player from '$components/Player';
 
+const playlist = [
+  {
+    name: 'Christian Horner',
+    duration: '1:30',
+    views: 100,
+    text: "In a heated aftermath of the Austrian Grand Prix, Christian Horner defended Max Verstappen after his late-race collision with Lando Norris, labeling the 10-second penalty as “harsh.” Verstappen had been dominating the race until a rare slow pit stop on Lap 52 allowed Norris to close in. This set the stage for a thrilling duel between the two. On Lap 64, the tension peaked as contact between their cars caused punctures for both, forcing them to pit. Norris's car suffered extensive damage and he had to retire, while Verstappen managed to continue and finished fifth. Despite the penalty, he maintained a significant gap over Nico Hulkenberg, securing his position.",
+  },
+  {
+    name: 'Grand Prix Italie',
+    duration: '1:30',
+    views: 100,
+    text: 'Christian Horner has spoken out about the dramatic clash between Max Verstappen and Lando Norris during the Austrian Grand Prix, describing the 10-second penalty given to Verstappen as “harsh.” Verstappen had been leading comfortably until a slow pit stop on Lap 52 cut his lead. This allowed Norris to mount a challenge, leading to several intense overtaking attempts. The conflict reached its climax on Lap 64 with contact that resulted in punctures for both drivers. While Norris’s car was too damaged to continue, Verstappen was able to rejoin the race and finished in fifth place. Despite the penalty, he stayed ahead of Nico Hulkenberg, retaining his position.',
+  },
+  {
+    name: 'Austrian Grand Prix',
+    duration: '1:30',
+    views: 100,
+    text: 'Christian Horner has spoken out about the dramatic clash between Max Verstappen and Lando Norris during the Austrian Grand Prix, describing the 10-second penalty given to Verstappen as “harsh.” Verstappen had been leading comfortably until a slow pit stop on Lap 52 cut his lead. This allowed Norris to mount a challenge, leading to several intense overtaking attempts. The conflict reached its climax on Lap 64 with contact that resulted in punctures for both drivers. While Norris’s car was too damaged to continue, Verstappen was able to rejoin the race and finished in fifth place. Despite the penalty, he stayed ahead of Nico Hulkenberg, retaining his position.',
+  },
+];
+
 export default function FakeVideoDialog({
   handleMute,
   muted,
-  duration,
-  views,
-  name,
 }: {
   handleMute: () => void;
   muted: boolean;
-  duration: string;
-  views: number;
-  name: string;
 }) {
+  const [selected, setSelected] = useState(0);
   const router = useRouter();
+
   return (
-    <div className={'w-full h-full'}>
-      <div className={'w-full overflow-hidden h-[300px] relative'}>
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: 1,
+        },
+      }}
+      exit={{
+        opacity: 0,
+      }}
+      key={selected}
+      className={'w-full h-full'}
+    >
+      <motion.div className={'w-full pointer-events-auto overflow-hidden h-[300px] relative'}>
+        <div className={'w-full space-x-2 flex absolute top-2 justify-center my-2'}>
+          <button
+            className={
+              'z-[9999]  transition-all hover:bg-primary rounded-full border-2 border-slate-600 p-2 text-white  top-0'
+            }
+            onClick={() => {
+              setSelected(selected - 1 < 0 ? playlist.length - 1 : selected - 1);
+            }}
+          >
+            <FaArrowLeft size={15} />
+          </button>
+          <button
+            className={
+              'z-[9999]  transition-all hover:bg-primary rounded-full border-2 border-slate-600 p-2 text-white  top-0'
+            }
+            onClick={() => {
+              setSelected(selected + 1 > playlist.length - 1 ? 0 : selected + 1);
+            }}
+          >
+            <FaArrowRight size={15} />
+          </button>
+        </div>
         <Player
           muted={muted}
           src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
@@ -64,24 +121,24 @@ export default function FakeVideoDialog({
             )}
           </button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
+      <motion.div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
         <div className={'flex justify-between items-center align-middle w-full'}>
           <div className={'flex justify-center space-x-2 align-middle items-center'}>
-            <h3 className={'font-bold text-xl'}>{name}</h3>{' '}
+            <h3 className={'font-bold text-xl'}>{playlist[selected].name}</h3>{' '}
             <MdOutlineHighQuality size={25} className={'text-gray-400'} />
             <MdOutlineChat size={20} className={'text-gray-400'} />
           </div>
           <div>
-            <p className={'text-xs text-gray-400'}>Duration: {duration}</p>
-            <p className={'text-xs text-gray-400'}>Views: {views}</p>
+            <p className={'text-xs text-gray-400'}>Duration: {playlist[selected].duration}</p>
+            <p className={'text-xs text-gray-400'}>Views: {playlist[selected].views}</p>
           </div>
         </div>
 
         <p className={'text-xs flex flex-col whitespace-pre-wrap font-normal'}>{DEFAULT_TEXT}</p>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

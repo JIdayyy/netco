@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import { BiLike, BiVolumeFull, BiVolumeMute } from 'react-icons/bi';
 import { FaLock } from 'react-icons/fa';
-import { IoPlay } from 'react-icons/io5';
-import { MdOutlineChat, MdOutlineHighQuality } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 import Dialog from '$components/Dialog';
 import FakeVideoDialog from '$components/Dialog/FakeVideoDialog';
-import Player from '$components/Player';
-import Button from '$components/UI/Button';
 import { IMG_PLACEHOLDER } from '$utils/constants';
 
 function VideoCard(props: Readonly<any>) {
@@ -24,7 +18,6 @@ function VideoCard(props: Readonly<any>) {
   const handleDialogClose = () => {
     setIsDialogOpen(false);
   };
-  console.log('state', isDialogOpen);
 
   const handleMute = () => {
     setMuted((state) => !state);
@@ -43,14 +36,8 @@ function VideoCard(props: Readonly<any>) {
       }
     >
       {isDialogOpen && (
-        <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog
-            handleMute={handleMute}
-            muted={muted}
-            duration={'00:00'}
-            views={0}
-            name={props.name}
-          />
+        <Dialog handleDialogClose={() => handleDialogClose()}>
+          <FakeVideoDialog handleMute={handleMute} muted={muted} />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>

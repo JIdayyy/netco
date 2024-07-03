@@ -96,7 +96,7 @@ export default function Menu({ config }: { config: WebConfig['header'] }) {
             )}
           </nav>
           <button
-            className={'w-full bg-primary text-white text-2xl rounded-sm'}
+            className={'w-full bg-primary text-white text-xl rounded-sm'}
             onClick={toggleMenu}
           >
             Sign In

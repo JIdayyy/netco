@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { BiLike, BiVolumeFull, BiVolumeMute } from 'react-icons/bi';
-import { IoPlay } from 'react-icons/io5';
-import { MdOutlineChat, MdOutlineHighQuality } from 'react-icons/md';
 import MultiCarousel, { ResponsiveType } from 'react-multi-carousel';
 import { OriginsPlaylistCard, OriginsVideoCard } from '@origins-digital/types/ott';
 import { motion } from 'framer-motion';
@@ -9,8 +6,6 @@ import Image from 'next/image';
 
 import Dialog from '$components/Dialog';
 import FakeVideoDialog from '$components/Dialog/FakeVideoDialog';
-import Player from '$components/Player';
-import Button from '$components/UI/Button';
 import { IMG_PLACEHOLDER } from '$utils/constants';
 
 const responsive: ResponsiveType = {
@@ -60,7 +55,6 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
   };
 
   const handleDialogClose = () => {
-    console.log('CLOSE');
     setIsDialogOpen(false);
   };
 
@@ -78,13 +72,7 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog
-            handleMute={handleMute}
-            muted={muted}
-            duration={props.duration || '00:00'}
-            views={(props as any).views || 0}
-            name={props.name}
-          />
+          <FakeVideoDialog handleMute={handleMute} muted={muted} />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
@@ -139,13 +127,7 @@ function CategoryCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog
-            handleMute={handleMute}
-            muted={muted}
-            duration={'00:00'}
-            views={0}
-            name={props.name}
-          />
+          <FakeVideoDialog handleMute={handleMute} muted={muted} />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'} />
@@ -209,12 +191,3 @@ function PlaylistCard(props: Readonly<OriginsPlaylistCard>) {
     </motion.div>
   );
 }
-
-const DEFAULT_TEXT =
-  'Christian Horner has given his view on the dramatic late-race collision between Max Verstappen and Lando Norris in the Austrian Grand Prix, with the Red Bull boss arguing that the 10-second penalty handed to Verstappen was “harsh”.\n' +
-  '\n' +
-  'Verstappen had led for much of the race before seeing his advantage over second-placed Norris cut following a rare slow pit stop from the Red Bull squad on Lap 52 of 71. A thrilling chase ensued in the laps that followed as Norris attempted several overtakes in a battle for the lead.\n' +
-  '\n' +
-  'It all came to a head on Lap 64 when there was contact between the pair, resulting in both picking up punctures and having to return slowly to the pits. While Norris sustained too much damage to continue, Verstappen rejoined and ended the event in fifth place.' +
-  'The Dutchman did, however, receive a 10-second time penalty after being deemed at fault for the incident, but ultimately had enough of a gap to Nico Hulkenberg in sixth to hold the position.\n' +
-  '\n';

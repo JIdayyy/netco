@@ -1,6 +1,7 @@
 import React from 'react';
 import { RiMenu2Fill } from 'react-icons/ri';
 import { WebConfig } from '@origins-digital/types/web-experience';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -13,11 +14,27 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
   const router = useRouter();
 
   return (
-    <nav
-      className={`w-full ${
-        !isScrolled && !isMenuOpen
-          ? 'from-black via-black to-transparent  bg-gradient-to-b'
-          : 'from-slate-600 via-slate-800 to-slate-600 bg-gradient-to-r'
+    <motion.nav
+      variants={{
+        scrolled: {
+          backgroundColor: '#f16305',
+          transition: {
+            duration: 0,
+            delay: 0,
+          },
+        },
+        notScrolled: {
+          backgroundColor: 'transparent',
+          transition: {
+            duration: 0,
+            delay: 0,
+          },
+        },
+      }}
+      initial={'notScrolled'}
+      animate={isScrolled || isMenuOpen ? 'scrolled' : 'notScrolled'}
+      className={`w-full   ${
+        !isScrolled && !isMenuOpen && 'bg-gradient-to-b from-black via-black to-transparent'
       } fixed top-0 z-[8999] transition-all ease-in-out duration-300 text-white flex justify-center`}
     >
       <div
@@ -71,7 +88,7 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
           </Button>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 

@@ -1,16 +1,21 @@
 import { ReactElement } from 'react';
+import ReactPlayer from 'react-player';
 import { GetServerSideProps } from 'next';
 import Cms from 'src/services/Cms';
 
 import Layout from '$components/Layout';
-import Player from '$components/Player';
 
 export default function VideoPage() {
   return (
-    <div>
-      <Player
+    <div className={'w-full min-h-screen'}>
+      <ReactPlayer
+        url={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
+        playing={true}
+        controls={true}
+        loop={true}
+        width="100%"
+        height="100%"
         muted={false}
-        src={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
       />
     </div>
   );
