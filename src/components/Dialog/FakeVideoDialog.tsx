@@ -123,7 +123,7 @@ export default function FakeVideoDialog({
         </div>
       </motion.div>
 
-      <motion.div className={'w-full pointer-events-auto  space-y-4 text-white p-10'}>
+      <motion.div className={'w-full pointer-events-auto  space-y-4 text-white p-5 tablet:p-10'}>
         <div className={'flex justify-between items-center align-middle w-full'}>
           <div className={'flex justify-center space-x-2 align-middle items-center'}>
             <h3 className={'font-bold text-xl'}>{playlist[selected].name}</h3>{' '}
