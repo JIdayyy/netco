@@ -10,7 +10,7 @@ import Button from '$components/UI/Button';
 import { useAppContext } from '$contexts/AppContext';
 
 function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
-  const { isScrolled, toggleMenu, isMenuOpen } = useAppContext();
+  const { isScrolled, toggleMenu, isMenuOpen, isAuth, handleSignOut } = useAppContext();
   const router = useRouter();
 
   return (
@@ -79,12 +79,18 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
           <Button
             size={'sm'}
             variant={'primary'}
-            onClick={() => router.push('/auth/signin')}
+            onClick={() => {
+              if (!isAuth) {
+                router.push('/auth/signin');
+              } else {
+                handleSignOut();
+              }
+            }}
             className={
               'bg-slate-500 cursor-pointer desktop:!flex hidden  items-center space-x-2 justify-center align-middle px-2 py-1 text-white  rounded-sm'
             }
           >
-            <p>Sign In</p>
+            {!isAuth ? <p>Sign In</p> : <p>Sign Out</p>}
           </Button>
         </div>
       </div>

@@ -67,22 +67,21 @@ function PlaylistCard(
   >,
 ) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [muted, setMuted] = useState(false);
   const handleDialogOpen = () => {
     setIsDialogOpen(true);
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleMute = () => {
-    setMuted((state) => !state);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   return (
     <motion.div
-      onClick={handleDialogOpen}
+      onClick={() => {
+        if (!isDialogOpen) {
+          handleDialogOpen();
+        }
+      }}
       whileHover={{ scale: 1.05 }}
       initial={{ scale: 0.9, opacity: 0.5 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -92,7 +91,7 @@ function PlaylistCard(
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog handleMute={handleMute} muted={muted} />
+          <FakeVideoDialog />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
@@ -128,23 +127,22 @@ function VideoCard(
   >,
 ) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [muted, setMuted] = useState(false);
 
   const handleDialogOpen = () => {
-    setIsDialogOpen(true);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleMute = () => {
-    setMuted((state) => !state);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   return (
     <motion.div
-      onClick={handleDialogOpen}
+      onClick={() => {
+        if (!isDialogOpen) {
+          handleDialogOpen();
+        }
+      }}
       whileHover={{ scale: 1.05 }}
       className={`rounded-md border border-gray-700  cursor-pointer ${
         props.format === 'portrait' ? 'aspect-portrait' : 'aspect-video'
@@ -152,7 +150,7 @@ function VideoCard(
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog handleMute={handleMute} muted={muted} />
+          <FakeVideoDialog />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>

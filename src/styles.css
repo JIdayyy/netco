@@ -8,3 +8,7 @@
   --secondary: #0062bf;
 }
 
+html{
+  scrollbar-gutter: stable;
+  overflow: auto;
+}

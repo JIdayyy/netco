@@ -29,13 +29,9 @@ const playlist = [
   },
 ];
 
-export default function FakeVideoDialog({
-  handleMute,
-  muted,
-}: {
-  handleMute: () => void;
-  muted: boolean;
-}) {
+export default function FakeVideoDialog() {
+  const [muted, setMuted] = useState(false);
+
   const [selected, setSelected] = useState(0);
   const router = useRouter();
 
@@ -111,7 +107,9 @@ export default function FakeVideoDialog({
             </button>
           </div>
           <button
-            onClick={handleMute}
+            onClick={() => {
+              setMuted(!muted);
+            }}
             className={'rounded-full hover:bg-white  transition-all  border-2 border-gray-500 p-1'}
           >
             {muted ? (

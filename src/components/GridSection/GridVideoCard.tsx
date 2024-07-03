@@ -5,27 +5,29 @@ import Image from 'next/image';
 
 import Dialog from '$components/Dialog';
 import FakeVideoDialog from '$components/Dialog/FakeVideoDialog';
+import { useAppContext } from '$contexts/AppContext';
 import { IMG_PLACEHOLDER } from '$utils/constants';
 
 function VideoCard(props: Readonly<any>) {
   const [isHover, setIsHover] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const { isAuth } = useAppContext();
+
   const handleDialogOpen = () => {
-    setIsDialogOpen(true);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleMute = () => {
-    setMuted((state) => !state);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   return (
     <motion.div
-      onClick={handleDialogOpen}
+      onClick={() => {
+        if (!isDialogOpen) {
+          handleDialogOpen();
+        }
+      }}
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       whileHover={{ scale: 1.05 }}
@@ -35,9 +37,9 @@ function VideoCard(props: Readonly<any>) {
         'rounded-md transform border border-gray-700 ease-in cursor-pointer aspect-video   relative overflow-hidden'
       }
     >
-      {isDialogOpen && (
+      {isDialogOpen && isAuth && (
         <Dialog handleDialogClose={() => handleDialogClose()}>
-          <FakeVideoDialog handleMute={handleMute} muted={muted} />
+          <FakeVideoDialog />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
@@ -65,7 +67,7 @@ function VideoCard(props: Readonly<any>) {
           'absolute w-full h-full  bg-gradient-to-b from-transparent via-transparent to-black z-30'
         }
       ></div>
-      {isHover && (
+      {isHover && !isAuth && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, backgroundColor: 'rgba(0,0,0,0.5)' }}

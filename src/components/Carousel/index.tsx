@@ -48,23 +48,22 @@ export default function Carousel(props: Readonly<any>) {
 
 function VideoCard(props: Readonly<OriginsVideoCard>) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [muted, setMuted] = useState(false);
 
   const handleDialogOpen = () => {
-    setIsDialogOpen(true);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleMute = () => {
-    setMuted((state) => !state);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   return (
     <motion.div
-      onClick={handleDialogOpen}
+      onClick={() => {
+        if (!isDialogOpen) {
+          handleDialogOpen();
+        }
+      }}
       whileHover={{ scale: 1.05 }}
       className={
         'rounded-md border border-gray-700  cursor-pointer aspect-video  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
@@ -72,10 +71,10 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog handleMute={handleMute} muted={muted} />
+          <FakeVideoDialog />
         </Dialog>
       )}
-      <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'}></div>
+      <div className={'w-full z-[50]  absolute top-0 bg-slate-500 h-[10px]'}></div>
 
       <div
         className={
@@ -104,22 +103,22 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
 
 function CategoryCard(props: Readonly<OriginsVideoCard>) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [muted, setMuted] = useState(false);
 
   const handleDialogOpen = () => {
-    setIsDialogOpen(true);
+    setIsDialogOpen(!isDialogOpen);
   };
 
   const handleDialogClose = () => {
-    setIsDialogOpen(false);
+    setIsDialogOpen(!isDialogOpen);
   };
 
-  const handleMute = () => {
-    setMuted((state) => !state);
-  };
   return (
     <motion.div
-      onClick={handleDialogOpen}
+      onClick={() => {
+        if (!isDialogOpen) {
+          handleDialogOpen();
+        }
+      }}
       whileHover={{ scale: 1.05 }}
       className={
         'rounded-md border border-gray-700  cursor-pointer aspect-portrait  hover:shadow-zinc-800 hover:z-[9999]  relative overflow-hidden'
@@ -127,7 +126,7 @@ function CategoryCard(props: Readonly<OriginsVideoCard>) {
     >
       {isDialogOpen && (
         <Dialog handleDialogClose={handleDialogClose}>
-          <FakeVideoDialog handleMute={handleMute} muted={muted} />
+          <FakeVideoDialog />
         </Dialog>
       )}
       <div className={'w-full z-[50] absolute top-0 bg-slate-500 h-[10px]'} />

@@ -19,12 +19,12 @@ export default function Dialog({ children, handleDialogClose }: IProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className={
-        'fixed top-0 left-0 bg-black pointer-events-none z-[8999] bg-opacity-50 w-screen h-screen flex flex-col justify-center items-center align-middle'
+        'fixed top-0 left-0 bg-black  z-[8999] bg-opacity-50 w-screen h-screen flex flex-col justify-center items-center align-middle'
       }
     >
       <motion.div
         className={
-          'bg-background shadow-2xl pointer-events-auto shadow-zinc-800 border-slate-600 border-2 overflow-y-auto max-h-[98vh] z-[9998] relative rounded-xl overflow-hidden tablet:w-[70%] w-[95%] desktop:w-[55%]'
+          'bg-background shadow-2xl  shadow-zinc-800 border-slate-600 border-2 overflow-y-auto scrollbar-thin max-h-[98vh] z-[9998] relative rounded-xl overflow-hidden tablet:w-[70%] w-[95%] desktop:w-[55%]'
         }
         ref={ref}
       >
