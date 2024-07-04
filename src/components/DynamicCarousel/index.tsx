@@ -16,11 +16,11 @@ const getResponsive = (format: string): ResponsiveType => {
   return {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: format !== 'portrait' ? 4 : 4,
+      items: format !== 'portrait' ? 3 : 3,
     },
     tablet: {
       breakpoint: { max: 1024, min: 768 },
-      items: format !== 'portrait' ? 4 : 4,
+      items: format !== 'portrait' ? 3 : 3,
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },

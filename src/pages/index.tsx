@@ -11,6 +11,7 @@ import { KENTICO_HARDCODED_PAGES } from '$utils/constants';
 type IProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 function Home({ page }: Readonly<IProps>): JSX.Element | null {
+  console.log(page);
   if (!page) {
     return null;
   }

@@ -26,7 +26,12 @@ const responsive: ResponsiveType = {
   },
 };
 
-export default function Carousel(props: Readonly<any>) {
+export default function Carousel(
+  props: Readonly<{
+    name: string;
+    items: (OriginsPlaylistCard | OriginsVideoCard)[];
+  }>,
+) {
   return (
     <div className={'w-full max-w-7xl'}>
       <h2 className={'font-bold px-8 uppercase text-white'}>{props.name}</h2>
@@ -56,7 +61,6 @@ function VideoCard(props: Readonly<OriginsVideoCard>) {
   const handleDialogClose = () => {
     setIsDialogOpen(!isDialogOpen);
   };
-
   return (
     <motion.div
       onClick={() => {

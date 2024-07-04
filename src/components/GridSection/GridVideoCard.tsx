@@ -8,7 +8,13 @@ import FakeVideoDialog from '$components/Dialog/FakeVideoDialog';
 import { useAppContext } from '$contexts/AppContext';
 import { IMG_PLACEHOLDER } from '$utils/constants';
 
-function VideoCard(props: Readonly<any>) {
+function VideoCard(
+  props: Readonly<{
+    name: string;
+    duration: string | null;
+    poster?: string | null;
+  }>,
+) {
   const [isHover, setIsHover] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { isAuth } = useAppContext();
