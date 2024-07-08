@@ -39,7 +39,7 @@ function Header({ config }: { config: WebConfig['header'] }): JSX.Element {
     >
       <div
         className={
-          'max-w-7xl py-2 px-5 tablet:px-10 tablet:py-4 flex w-full justify-between items-stretch  align-middle'
+          'max-w-7xl py-2   tablet:py-4 flex w-full justify-between items-stretch  align-middle'
         }
       >
         <button
