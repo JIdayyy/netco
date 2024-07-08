@@ -1,6 +1,5 @@
 import { AdvertisementSection } from '@origins-digital/types/ott';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function AdSection(props: Readonly<AdvertisementSection>) {
   return (

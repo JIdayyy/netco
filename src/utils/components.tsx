@@ -27,7 +27,7 @@ export const componentRenderer = (component: SectionContent) => {
     case 'section_static_ad':
       return <AdSection {...component} />;
     case 'section_static_carousel':
-      return <Carousel {...component} />;
+      return <Carousel name={component.title} items={component.items} />;
     case 'section_dynamic_carousel':
       return <DynamicCarousel {...component} />;
     case 'section_dynamic_grid_with_category':

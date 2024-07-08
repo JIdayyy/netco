@@ -8,7 +8,6 @@ import Layout from '$components/Layout';
 export default function VideoPage({
   video,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log(video);
   return (
     <div className={'w-full min-h-screen'}>
       <ReactPlayer
