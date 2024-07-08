@@ -35,7 +35,7 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
         >
           <div
             className={
-              'absolute px-10 space-y-1 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-1/2 z-50'
+              'absolute px-2 desktop:px-0 space-y-1 flex-col flex align-bottom items-start justify-end w-full max-w-7xl h-1/2 z-50'
             }
           >
             <p
