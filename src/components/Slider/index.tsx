@@ -1,6 +1,6 @@
 import { IoPlay } from 'react-icons/io5';
 import Carousel from 'react-multi-carousel';
-import { OriginsVideoCard, SlideSection } from '@origins-digital/types/ott';
+import { SlideSection } from '@origins-digital/types/ott';
 import Image from 'next/image';
 
 import { IMG_PLACEHOLDER } from '$utils/constants';
@@ -25,7 +25,9 @@ const responsive = {
   },
 };
 
-const renderer = ({ item }: { item: OriginsVideoCard }) => {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+function Renderer({ item }: { item: any }) {
   switch (item.itemType) {
     case 'video':
       return (
@@ -73,13 +75,15 @@ const renderer = ({ item }: { item: OriginsVideoCard }) => {
     default:
       return null;
   }
-};
+}
 
 export default function Slider({ items }: SlideSection) {
   return (
     <div className={'flex tablet:mb-6 mb-0 mt-0 tablet:mt-6 flex-col w-full'}>
       <Carousel responsive={responsive}>
-        {items.reverse().map((item) => renderer({ item: item as OriginsVideoCard }))}
+        {items.reverse().map((item) => (
+          <Renderer item={item} key={item._kenticoId} />
+        ))}
       </Carousel>
     </div>
   );

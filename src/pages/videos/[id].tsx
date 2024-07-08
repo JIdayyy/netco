@@ -1,16 +1,13 @@
 import { ReactElement } from 'react';
-import ReactPlayer from 'react-player';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps } from 'next';
 import Cms from 'src/services/Cms';
 
 import Layout from '$components/Layout';
 
-export default function VideoPage({
-  video,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function VideoPage() {
   return (
-    <div className={'w-full min-h-screen'}>
-      <ReactPlayer
+    <div className={'w-full flex items-center align-middle justify-center h-screen'}>
+      {/*  <ReactPlayer
         url={'https://minio-api.jidayyy.com/yourte/Design%20sans%20titre.mp4'}
         playing={false}
         controls={true}
@@ -18,11 +15,10 @@ export default function VideoPage({
         width="100%"
         height="100%"
         muted={false}
-      />
+      />*/}
 
       <div>
-        <h1 className={'font-title text-white'}>{video?.title}</h1>
-        <p className={''}>{video?.description}</p>
+        <h1 className={'text-2xl text-white'}>IN PROGRESS</h1>
       </div>
     </div>
   );

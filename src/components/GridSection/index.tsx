@@ -59,7 +59,7 @@ export default function GridSection(config: Readonly<SectionDynamicGridWithCateg
     <div
       className={'w-full max-w-7xl flex flex-col justify-center items-center  px-2 py-5 lg:px-0'}
     >
-      <p className={'text-white w-full text-left uppercase font-bold'}>{config.title}</p>
+      <p className={'text-white px-8 w-full text-left uppercase font-bold'}>{config.title}</p>
       <GridSectionCategoriesTabs
         selected={selected}
         setSelected={setSelected}
