@@ -9,16 +9,16 @@ export const DEFAULT_TEXT =
 
 export const playlist = [
   {
-    name: 'Christian Horner',
-    duration: '1:30',
-    views: 100,
-    text: DEFAULT_TEXT,
-  },
-  {
     name: 'Grand Prix Italie',
     duration: '1:30',
     views: 100,
     text: 'Christian Horner has spoken out about the dramatic clash between Max Verstappen and Lando Norris during the Austrian Grand Prix, describing the 10-second penalty given to Verstappen as “harsh.” \nVerstappen had been leading comfortably until a slow pit stop on Lap 52 cut his lead. \n\nThis allowed Norris to mount a challenge, leading to several intense overtaking attempts. \nThe conflict reached its climax on Lap 64 with contact that resulted in punctures for both drivers. While Norris’s car was too damaged to continue, Verstappen was able to rejoin the race and finished in fifth place. Despite the penalty, he stayed ahead of Nico Hulkenberg, retaining his position.',
+  },
+  {
+    name: 'Christian Horner',
+    duration: '1:30',
+    views: 100,
+    text: DEFAULT_TEXT,
   },
   {
     name: 'Austrian Grand Prix',
