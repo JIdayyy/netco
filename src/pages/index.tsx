@@ -26,7 +26,7 @@ export const getStaticProps = async () => {
   const [page] = await Promise.allSettled([
     Cms.getPageContent<KenticoPageLayoutDTO>(KENTICO_HARDCODED_PAGES.HOME, {
       params: {
-        language: 'fr',
+        language: 'en',
       },
     }),
   ]);
